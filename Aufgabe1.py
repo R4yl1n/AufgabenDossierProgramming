@@ -4,8 +4,7 @@ class Medium:
         self.__available = False
 
     def info(self):
-        print(f"Medium '{self.title}' verfügbar: {self.available}")
-
+        pass
     @property
     def title(self):
         return self.__title
