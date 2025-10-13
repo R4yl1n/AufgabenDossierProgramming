@@ -1,10 +1,14 @@
-class Medium:
+from abc import ABC, abstractmethod
+
+class Medium(ABC):
     def __init__(self,title):
         self.__title = title
-        self.__available = False
+        self.__available = True
 
+    @abstractmethod
     def info(self):
         pass
+
     @property
     def title(self):
         return self.__title
@@ -25,7 +29,7 @@ class Book(Medium):
         self.__genre = genre
 
     def info(self):
-        print(f"Buch '{self.title}' von {self.__author}, Genre: {self.__genre}, verfügbar: {self.available}")
+        return(f"Buch '{self.title}' von {self.__author}, Genre: {self.__genre}, verfügbar: {self.available}")
 
     @property
     def author(self):
@@ -43,7 +47,7 @@ class Dvd(Medium):
         self.__runtime = runtime
 
     def info(self):
-        print(f"DVD '{self.title}', Director: {self.__director}, Runtime: {self.__runtime} Min, verfügbar: {self.available}")
+        return(f"DVD '{self.title}', Director: {self.__director}, Runtime: {self.__runtime} Min, verfügbar: {self.available}")
 
     @property
     def director(self):
@@ -56,22 +60,30 @@ class Dvd(Medium):
 
 class LibraryManager:
     def __init__(self):
-        self.library = []
+        self.__library = []
+
+    @property
+    def media(self):
+        Media = self.show_all_media_info()
+        for x in Media:
+            print(x)
 
     def add_medium(self, medium: Medium):
-        self.library.append(medium)
+        self.__library.append(medium)
 
     def show_all_media_info(self):
-        for x in self.library:
-            x.info()
+        media_list = []
+        for x in self.__library:
+            media_list.append(x.info())
+        return media_list
 
     def borrow(self,title:str):
-        for x in self.library:
+        for x in self.__library:
             if x.title == title:
                 x.available = False
 
     def return_item(self,title:str):
-        for x in self.library:
+        for x in self.__library:
             if x.title == title:
                 x.available = True
 
@@ -84,13 +96,13 @@ d = Dvd("Inception", "Christopher Nolan", 148)
 print("[OPERATION] Zwei Medien werden zur Bibliothek hinzugefügt...")
 lm.add_medium(b)
 lm.add_medium(d)
-lm.show_all_media_info()
+lm.media
 
 print("[OPERATION] Zwei Medien werden ausgeliehen...")
 lm.borrow("Der Herr der Ringe")
 lm.borrow("Inception")
-lm.show_all_media_info()
+lm.media
 
 print("[OPERATION] Ein Buch wird zurückgegeben...")
 lm.return_item("Der Herr der Ringe")
-lm.show_all_media_info()
+lm.media
