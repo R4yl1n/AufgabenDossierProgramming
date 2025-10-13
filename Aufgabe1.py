@@ -15,8 +15,11 @@ class Medium(ABC):
 
     @property
     def available(self):
-        return self.__available
-
+        if self.__available:
+            return "verfügbar"
+        else:
+            return "ausgeliehen"
+        
     @available.setter
     def available(self, value: bool):
         self.__available = value
@@ -64,14 +67,15 @@ class LibraryManager:
 
     @property
     def media(self):
-        Media = self.show_all_media_info()
+        print(f"=========== \nMedien in der Bibliothek\n===========\n")
+        Media = self.give_media_list()
         for x in Media:
-            print(x)
+            print(f"{x}\n-------\n")
 
     def add_medium(self, medium: Medium):
         self.__library.append(medium)
 
-    def show_all_media_info(self):
+    def give_media_list(self):
         media_list = []
         for x in self.__library:
             media_list.append(x.info())
