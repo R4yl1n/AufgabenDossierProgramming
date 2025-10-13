@@ -32,7 +32,7 @@ class Book(Medium):
         self.__genre = genre
 
     def info(self):
-        return(f"Buch {self.title}, Autor: {self.__author}, Genre: {self.__genre}, Status: {self.available}")
+        return(f"Buch: {self.title}, Autor: {self.__author}, Genre: {self.__genre}, Status: {self.available}")
 
     @property
     def author(self):
@@ -49,7 +49,7 @@ class Dvd(Medium):
         self.__runtime = runtime
 
     def info(self):
-        return(f"DVD {self.title}, Director: {self.__director}, Spielzeit: {self.__runtime} Minuten, Status: {self.available}")
+        return(f"DVD: {self.title}, Director: {self.__director}, Spielzeit: {self.__runtime} Minuten, Status: {self.available}")
 
     @property
     def director(self):
