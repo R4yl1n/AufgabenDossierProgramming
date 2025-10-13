@@ -88,7 +88,6 @@ class LibraryManager:
                 x.available = True
 
 
-# Beispiel
 lm = LibraryManager()
 b = Book("Der Herr der Ringe", "J.R.R. Tolkien", "Fantasy")
 d = Dvd("Inception", "Christopher Nolan", 148)
