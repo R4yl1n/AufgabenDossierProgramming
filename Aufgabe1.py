@@ -24,15 +24,15 @@ class Medium(ABC):
     def available(self, value: bool):
         self.__available = value
 
-
 class Book(Medium):
     def __init__(self,title,author,genre):
         super().__init__(title)
+
         self.__author = author
         self.__genre = genre
 
     def info(self):
-        return(f"Buch '{self.title}' von {self.__author}, Genre: {self.__genre}, verfügbar: {self.available}")
+        return(f"Buch {self.title}, Autor: {self.__author}, Genre: {self.__genre}, Status: {self.available}")
 
     @property
     def author(self):
@@ -42,7 +42,6 @@ class Book(Medium):
     def genre(self):
         return self.__genre
 
-
 class Dvd(Medium):
     def __init__(self,title,director,runtime):
         super().__init__(title)
@@ -50,7 +49,7 @@ class Dvd(Medium):
         self.__runtime = runtime
 
     def info(self):
-        return(f"DVD '{self.title}', Director: {self.__director}, Runtime: {self.__runtime} Min, verfügbar: {self.available}")
+        return(f"DVD {self.title}, Director: {self.__director}, Spielzeit: {self.__runtime} Minuten, Status: {self.available}")
 
     @property
     def director(self):
@@ -59,7 +58,6 @@ class Dvd(Medium):
     @property
     def runtime(self):
         return self.__runtime
-
 
 class LibraryManager:
     def __init__(self):
@@ -90,7 +88,6 @@ class LibraryManager:
         for x in self.__library:
             if x.title == title:
                 x.available = True
-
 
 lm = LibraryManager()
 b = Book("Der Herr der Ringe", "J.R.R. Tolkien", "Fantasy")
