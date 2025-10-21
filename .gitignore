@@ -1,0 +1,22 @@
+# 🧩 VS Code Settings
+.vscode/
+*.code-workspace
+
+# 💡 PyCharm Settings
+.idea/
+
+# 🐍 Python venv
+.venv/
+venv/
+
+# 🧾 Lokale Einstellungen oder geheime Keys
+.env
+*.env
+
+# 🧠 macOS
+.DS_Store
+
+# 🔧 Cache / Logs
+__pycache__/
+*.pyc
+*.log
